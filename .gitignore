@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets: NEVER commit these
+.env
+kaggle.json
+
+# Data: too big for Git
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+data/*.db
+
+# Models: published on Hugging Face Hub instead
+models/*
+!models/.gitkeep
+!models/MODEL_CARD.md
+*.pth
+*.pt
+*.onnx
+*.tflite
+*.zip
+
+# Experiment tracking
+wandb/
+
+# Frontend / Android build output
+node_modules/
+dist/
+mobile/twa/app/
+mobile/twa/*.keystore
+mobile/twa/*.jks
+mobile/twa/*.aab
+mobile/twa/*.apk
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,23 @@
+[project]
+name = "krishimitra"
+version = "1.0.0"
+description = "AI crop disease detection and farmer advisory – click a leaf, save your crop."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]  # FastAPI uses function calls (File(...)) as default arguments by design
+
+[tool.ruff.lint.per-file-ignores]
+"src/llm/prompts.py" = ["E501"]  # prompt text reads better unwrapped
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

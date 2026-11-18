@@ -1,0 +1,30 @@
+name: Deploy to Hugging Face Space
+
+# Runs after CI passes on main. Set up once (see docs/DEPLOYMENT.md):
+#   Repository secret   HF_TOKEN     – a Hugging Face "write" token
+#   Repository variable HF_SPACE_ID  – e.g. your-username/krishimitra
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: ${{ vars.HF_SPACE_ID != '' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install huggingface_hub==0.26.2
+
+      - name: Upload app to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_ID: ${{ vars.HF_SPACE_ID }}
+        run: python scripts/deploy_hf_space.py

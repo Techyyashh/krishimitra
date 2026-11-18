@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>KrishiMitra – Crop Doctor</title>
+  <meta name="description" content="Click a leaf, save your crop. AI crop disease detection with advice in Hindi and English.">
+  <meta name="theme-color" content="#1f7a3a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon-192.png" alt="" width="36" height="36">
+      <div>
+        <h1>KrishiMitra</h1>
+        <p class="tagline" data-i18n="tagline">Click a leaf, save your crop.</p>
+      </div>
+    </div>
+    <button id="langBtn" class="lang-btn" type="button" aria-label="Change language">हिंदी</button>
+  </header>
+
+  <div id="offlineBanner" class="banner hidden" role="status" data-i18n="offline">You are offline. Connect to the internet to check a leaf.</div>
+
+  <main>
+    <!-- STEP 1: capture -->
+    <section class="card" id="captureCard">
+      <h2 data-i18n="step1">1. Take a photo of one leaf</h2>
+      <ul class="tips">
+        <li data-i18n="tip1">🌞 In daylight</li>
+        <li data-i18n="tip2">🍃 One leaf fills the screen</li>
+        <li data-i18n="tip3">📷 Hold the phone steady</li>
+      </ul>
+      <label class="btn btn-primary btn-big" for="fileInput">
+        <span aria-hidden="true">📷</span> <span data-i18n="takePhoto">Take / choose photo</span>
+      </label>
+      <input id="fileInput" type="file" accept="image/*" capture="environment" hidden>
+      <img id="preview" class="preview hidden" alt="Selected leaf photo">
+      <button id="checkBtn" class="btn btn-primary btn-big hidden" type="button" data-i18n="check">Check my crop</button>
+      <div id="loading" class="loading hidden" role="status">
+        <div class="spinner" aria-hidden="true"></div>
+        <span data-i18n="checking">Checking your leaf…</span>
+      </div>
+      <p id="errorMsg" class="error hidden" role="alert"></p>
+    </section>
+
+    <!-- STEP 2: result -->
+    <section class="card hidden" id="resultCard" aria-live="polite">
+      <h2 data-i18n="step2">2. Result</h2>
+      <div id="statusMsg" class="status"></div>
+      <div id="resultMain" class="result-main">
+        <p class="crop" id="resCrop"></p>
+        <p class="disease" id="resDisease"></p>
+        <div class="confidence">
+          <div class="bar"><div id="confBar" class="bar-fill"></div></div>
+          <span id="confText"></span>
+        </div>
+        <span id="severity" class="badge"></span>
+      </div>
+      <details id="topDetails">
+        <summary data-i18n="otherPossibilities">Other possibilities</summary>
+        <ol id="topList"></ol>
+      </details>
+      <div id="infoBox" class="info"></div>
+      <p class="disclaimer" id="disclaimer"></p>
+
+      <div class="feedback">
+        <span data-i18n="wasCorrect">Was this result correct?</span>
+        <button class="btn btn-small" type="button" data-correct="true">👍 <span data-i18n="yes">Yes</span></button>
+        <button class="btn btn-small" type="button" data-correct="false">👎 <span data-i18n="no">No</span></button>
+        <span id="feedbackThanks" class="thanks hidden" data-i18n="thanks">Thank you!</span>
+      </div>
+    </section>
+
+    <!-- STEP 3: advice -->
+    <section class="card hidden" id="adviceCard">
+      <h2 data-i18n="step3">3. What should I do?</h2>
+      <button id="adviceBtn" class="btn btn-primary btn-big" type="button" data-i18n="getAdvice">Get advice</button>
+      <div id="adviceLoading" class="loading hidden" role="status">
+        <div class="spinner" aria-hidden="true"></div><span data-i18n="thinking">Preparing advice…</span>
+      </div>
+      <div id="adviceText" class="advice"></div>
+      <button id="listenBtn" class="btn btn-secondary btn-big hidden" type="button">🔊 <span data-i18n="listen">Listen</span></button>
+      <audio id="audio" controls class="hidden"></audio>
+    </section>
+
+    <!-- STEP 4: chat -->
+    <section class="card hidden" id="chatCard">
+      <h2 data-i18n="step4">4. Ask a question</h2>
+      <div id="chatLog" class="chat-log"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" maxlength="500" autocomplete="off" required
+               data-i18n-placeholder="askPlaceholder" placeholder="e.g. Can I use neem oil?">
+        <button class="btn btn-primary" type="submit" data-i18n="send">Send</button>
+      </form>
+    </section>
+
+    <!-- History -->
+    <section class="card" id="historyCard">
+      <h2 data-i18n="history">My recent scans</h2>
+      <ul id="historyList" class="history"></ul>
+      <p id="historyEmpty" class="muted" data-i18n="noHistory">No scans yet.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer">Not a replacement for expert advice. Confirm with your local Krishi Vigyan Kendra (KVK).</p>
+    <p><a href="privacy.html" data-i18n="privacy">Privacy policy &amp; terms</a> · Kisan Call Centre: <a href="tel:18001801551">1800-180-1551</a></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

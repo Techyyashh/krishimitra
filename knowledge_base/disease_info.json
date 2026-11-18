@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "status": "DRAFT – general guidance. Verify every entry against the sources below (Phase 7) before public launch.",
+    "disclaimer_en": "This is AI-assisted general guidance, not a final diagnosis. Before spraying any chemical, confirm with your local Krishi Vigyan Kendra (KVK) or agriculture officer and always follow the dose written on the product label.",
+    "disclaimer_hi": "यह AI द्वारा दी गई सामान्य सलाह है, अंतिम निदान नहीं। कोई भी दवा छिड़कने से पहले अपने नज़दीकी कृषि विज्ञान केंद्र (KVK) या कृषि अधिकारी से पुष्टि करें और हमेशा दवा के लेबल पर लिखी मात्रा ही उपयोग करें।",
+    "sources_to_verify": [
+      "ICAR – Indian Council of Agricultural Research (icar.org.in) and its crop institutes",
+      "TNAU Agritech Portal – Crop Protection (agritech.tnau.ac.in)",
+      "State Agricultural University package-of-practices guides",
+      "CIB&RC – list of pesticides registered in India (ppqs.gov.in)",
+      "CABI Plantwise Knowledge Bank (plantwiseplusknowledgebank.org)"
+    ]
+  },
+  "crops": {
+    "Apple": {"en": "Apple", "hi": "सेब"},
+    "Blueberry": {"en": "Blueberry", "hi": "ब्लूबेरी"},
+    "Cherry_(including_sour)": {"en": "Cherry", "hi": "चेरी"},
+    "Corn_(maize)": {"en": "Maize (corn)", "hi": "मक्का"},
+    "Grape": {"en": "Grape", "hi": "अंगूर"},
+    "Orange": {"en": "Orange / citrus", "hi": "संतरा / नींबू वर्गीय"},
+    "Peach": {"en": "Peach", "hi": "आड़ू"},
+    "Pepper,_bell": {"en": "Bell pepper (capsicum)", "hi": "शिमला मिर्च"},
+    "Potato": {"en": "Potato", "hi": "आलू"},
+    "Raspberry": {"en": "Raspberry", "hi": "रास्पबेरी"},
+    "Soybean": {"en": "Soybean", "hi": "सोयाबीन"},
+    "Squash": {"en": "Squash / pumpkin", "hi": "कद्दू / स्क्वैश"},
+    "Strawberry": {"en": "Strawberry", "hi": "स्ट्रॉबेरी"},
+    "Tomato": {"en": "Tomato", "hi": "टमाटर"}
+  },
+  "healthy_template": {
+    "name_en": "Healthy leaf",
+    "name_hi": "स्वस्थ पत्ती",
+    "type": "none",
+    "severity": "none",
+    "cause": "No disease signs were detected on this leaf.",
+    "symptoms": ["Even green colour", "No spots, powder, curling or rotting"],
+    "organic": ["Keep monitoring the field every 3–4 days", "Use well-decomposed compost / FYM for strong plants"],
+    "chemical": ["No spray needed. Avoid unnecessary pesticide use – it costs money and harms friendly insects."],
+    "prevention": ["Use certified healthy seed or planting material", "Rotate crops every season", "Avoid water-logging; prefer drip or furrow irrigation", "Remove weeds that host pests"],
+    "summary_hi": "आपकी फसल की पत्ती स्वस्थ दिख रही है। खेत की नियमित निगरानी करते रहें और बिना ज़रूरत दवा का छिड़काव न करें।"
+  },
+  "diseases": {
+    "Apple___Apple_scab": {
+      "name_en": "Apple scab", "name_hi": "सेब का स्कैब रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Venturia inaequalis. It survives in fallen leaves and spreads in cool, wet weather.",
+      "symptoms": ["Olive-green to black velvety spots on leaves", "Leaves may curl, yellow and drop early", "Dark cracked scabs on fruit"],
+      "organic": ["Collect and destroy fallen leaves after harvest", "Prune to open the canopy for air and sunlight", "Sulphur-based sprays allowed in organic farming, as per label"],
+      "chemical": ["Protective fungicides such as captan or mancozeb", "Systemic fungicides such as myclobutanil or difenoconazole when infection is active"],
+      "prevention": ["Plant scab-tolerant varieties", "Spray protectively at bud break in rainy springs", "Urea spray on fallen leaves in autumn speeds their decay (ask KVK)"],
+      "summary_hi": "यह फफूंद से होने वाला रोग है जिसमें पत्तियों और फलों पर काले-जैतूनी धब्बे बनते हैं। गिरी हुई पत्तियाँ नष्ट करें और समय पर फफूंदनाशक का छिड़काव करें।"
+    },
+    "Apple___Black_rot": {
+      "name_en": "Apple black rot", "name_hi": "सेब का काला सड़न रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Botryosphaeria obtusa. It lives in dead wood, cankers and dried (mummified) fruit.",
+      "symptoms": ["Purple spots on leaves that turn brown in the centre ('frog-eye')", "Sunken cankers on branches", "Rotting fruit that turns black and shrivels"],
+      "organic": ["Cut out dead branches and cankers, burn or bury them", "Remove mummified fruit from the tree and ground", "Copper fungicides allowed in organic farming, as per label"],
+      "chemical": ["Captan or thiophanate-methyl based fungicides during the season"],
+      "prevention": ["Avoid wounds on bark and fruit", "Keep orchard clean of dead wood", "Balanced nutrition to keep trees vigorous"],
+      "summary_hi": "यह फफूंद रोग है जिसमें पत्तियों पर 'मेंढक-आंख' जैसे धब्बे और फल काले होकर सड़ते हैं। सूखी डालियाँ और सड़े फल हटाकर नष्ट करें।"
+    },
+    "Apple___Cedar_apple_rust": {
+      "name_en": "Cedar apple rust", "name_hi": "सेब का गेरुआ (रतुआ) रोग", "type": "fungal", "severity": "low",
+      "cause": "Fungus Gymnosporangium juniperi-virginianae. It needs juniper/cedar trees nearby to complete its life cycle.",
+      "symptoms": ["Bright yellow-orange spots on upper leaf surface", "Small tube-like growths under the spots", "Early leaf drop in heavy infection"],
+      "organic": ["Remove nearby juniper/cedar host plants if possible", "Sulphur sprays as per label"],
+      "chemical": ["Myclobutanil or mancozeb from pink-bud stage in wet springs"],
+      "prevention": ["Plant rust-resistant varieties", "Keep 1–2 km away from juniper plantings where possible"],
+      "summary_hi": "इसमें पत्तियों पर चमकीले पीले-नारंगी धब्बे बनते हैं। आसपास के जुनिपर (देवदार जैसे) पौधे इस रोग को फैलाते हैं।"
+    },
+    "Cherry_(including_sour)___Powdery_mildew": {
+      "name_en": "Cherry powdery mildew", "name_hi": "चेरी का चूर्णिल आसिता (पाउडरी मिल्ड्यू)", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Podosphaera clandestina. Favoured by warm days, cool nights and high humidity.",
+      "symptoms": ["White powdery patches on young leaves", "Leaves curl upward and become distorted", "Shoot growth slows"],
+      "organic": ["Prune for good air flow", "Wettable sulphur or potassium bicarbonate sprays, as per label", "Remove badly infected shoots"],
+      "chemical": ["Systemic fungicides such as myclobutanil or hexaconazole"],
+      "prevention": ["Avoid excess nitrogen fertiliser", "Do not wet leaves while irrigating", "Start sprays at first sign of white powder"],
+      "summary_hi": "पत्तियों पर सफ़ेद पाउडर जैसा फफूंद दिखता है। हवा का आवागमन बढ़ाएँ और सल्फर जैसे फफूंदनाशक का लेबल के अनुसार छिड़काव करें।"
+    },
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+      "name_en": "Maize gray leaf spot", "name_hi": "मक्का का धूसर पत्ती धब्बा रोग", "type": "fungal", "severity": "high",
+      "cause": "Fungus Cercospora zeae-maydis. It survives on crop residue and spreads in warm, humid, cloudy weather.",
+      "symptoms": ["Long, narrow, rectangular grey-tan spots between leaf veins", "Spots join and whole leaves dry", "Yield loss if upper leaves are affected before grain filling"],
+      "organic": ["Deep ploughing to bury infected residue", "Crop rotation with non-cereal crops", "Trichoderma-enriched compost in soil"],
+      "chemical": ["Strobilurin or triazole fungicides such as azoxystrobin or propiconazole at early disease stage"],
+      "prevention": ["Grow tolerant hybrids", "Avoid continuous maize in the same field", "Maintain proper plant spacing"],
+      "summary_hi": "मक्का की पत्तियों पर नसों के बीच लंबे, आयताकार धूसर धब्बे बनते हैं। फसल चक्र अपनाएँ और फसल अवशेष को गहरा दबाएँ।"
+    },
+    "Corn_(maize)___Common_rust_": {
+      "name_en": "Maize common rust", "name_hi": "मक्का का सामान्य गेरुआ (रतुआ) रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Puccinia sorghi. Spores travel long distances by wind; cool, moist weather favours it.",
+      "symptoms": ["Small, raised, cinnamon-brown powdery pustules on both leaf surfaces", "Leaves yellow and dry in severe cases"],
+      "organic": ["Remove volunteer maize plants and weeds", "Balanced fertiliser (avoid excess nitrogen)"],
+      "chemical": ["Mancozeb or propiconazole when pustules first appear"],
+      "prevention": ["Sow rust-resistant hybrids", "Timely sowing as advised for your region"],
+      "summary_hi": "पत्तियों पर भूरे-लाल रंग के उभरे हुए पाउडर जैसे दाने बनते हैं। रोगरोधी किस्में बोएँ और शुरुआत में ही उपचार करें।"
+    },
+    "Corn_(maize)___Northern_Leaf_Blight": {
+      "name_en": "Maize northern leaf blight (Turcicum blight)", "name_hi": "मक्का का उत्तरी पत्ती झुलसा (टर्सिकम ब्लाइट)", "type": "fungal", "severity": "high",
+      "cause": "Fungus Exserohilum turcicum. Survives on residue; spreads in moderate temperatures with heavy dew.",
+      "symptoms": ["Long cigar-shaped grey-green to tan lesions (2–15 cm)", "Lesions start on lower leaves and move up", "Leaves look burnt in severe attack"],
+      "organic": ["Remove and destroy infected lower leaves early", "Crop rotation and residue management", "Seed treatment with Trichoderma"],
+      "chemical": ["Mancozeb, propiconazole or azoxystrobin at first lesions"],
+      "prevention": ["Resistant hybrids", "Avoid dense planting", "Do not leave infected residue on the surface"],
+      "summary_hi": "पत्तियों पर सिगार जैसे लंबे भूरे-धूसर धब्बे बनते हैं जो नीचे की पत्तियों से ऊपर बढ़ते हैं। समय पर फफूंदनाशक और फसल चक्र अपनाएँ।"
+    },
+    "Grape___Black_rot": {
+      "name_en": "Grape black rot", "name_hi": "अंगूर का काला सड़न रोग", "type": "fungal", "severity": "high",
+      "cause": "Fungus Guignardia bidwellii. Survives in mummified berries; spreads in warm, wet weather.",
+      "symptoms": ["Round reddish-brown spots with dark borders on leaves", "Berries turn brown, then black, hard and shrivelled (mummies)"],
+      "organic": ["Remove mummified berries and infected leaves", "Prune for air flow", "Copper or sulphur sprays allowed in organic farming, as per label"],
+      "chemical": ["Mancozeb or myclobutanil from early shoot growth to berry set"],
+      "prevention": ["Clean vineyard floor", "Train vines to avoid dense canopy", "Protective sprays before rainy periods"],
+      "summary_hi": "पत्तियों पर लाल-भूरे धब्बे और दाने काले होकर सूख जाते हैं। सूखे दाने हटाएँ और बारिश से पहले बचाव का छिड़काव करें।"
+    },
+    "Grape___Esca_(Black_Measles)": {
+      "name_en": "Grape esca (black measles)", "name_hi": "अंगूर का एस्का (ब्लैक मीज़ल्स) रोग", "type": "fungal", "severity": "high",
+      "cause": "A complex of wood-decaying fungi (e.g. Phaeomoniella chlamydospora) entering through pruning wounds.",
+      "symptoms": ["'Tiger-stripe' pattern: yellow/red bands between veins that dry out", "Small dark spots on berries", "Sudden wilting of the vine in summer"],
+      "organic": ["Prune in dry weather and protect large cuts with a wound sealant", "Remove and burn badly infected wood"],
+      "chemical": ["There is no curative spray. Ask KVK about registered pruning-wound protectants."],
+      "prevention": ["Use healthy, certified planting material", "Avoid large pruning wounds", "Disinfect pruning tools"],
+      "summary_hi": "यह लकड़ी के अंदर फैलने वाला फफूंद रोग है, पत्तियों पर बाघ जैसी धारियाँ बनती हैं। इसका कोई सीधा इलाज नहीं है, छंटाई के घाव सुरक्षित रखें।"
+    },
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+      "name_en": "Grape leaf blight (Isariopsis leaf spot)", "name_hi": "अंगूर का पत्ती झुलसा (आइसैरियोप्सिस पत्ती धब्बा)", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Pseudocercospora vitis. Common in humid conditions late in the season.",
+      "symptoms": ["Irregular dark brown spots on older leaves", "Spots merge, leaves dry and drop early"],
+      "organic": ["Remove infected leaves", "Improve air flow by canopy management", "Copper sprays as per label"],
+      "chemical": ["Mancozeb or copper oxychloride"],
+      "prevention": ["Avoid overhead irrigation", "Keep vineyard free of fallen leaves"],
+      "summary_hi": "पुरानी पत्तियों पर गहरे भूरे अनियमित धब्बे बनते हैं और पत्तियाँ जल्दी गिरती हैं। संक्रमित पत्तियाँ हटाएँ।"
+    },
+    "Orange___Haunglongbing_(Citrus_greening)": {
+      "name_en": "Citrus greening (Huanglongbing, HLB)", "name_hi": "नींबू वर्गीय पौधों का ग्रीनिंग रोग (हुआंगलोंगबिंग)", "type": "bacterial", "severity": "high",
+      "cause": "Bacterium 'Candidatus Liberibacter asiaticus', spread by the Asian citrus psyllid insect and infected grafts.",
+      "symptoms": ["Blotchy, uneven yellowing of leaves (not matching on both halves)", "Small, lopsided, bitter fruit that stays green", "Twig dieback and tree decline"],
+      "organic": ["Remove and destroy infected trees to protect others", "Neem-based sprays and yellow sticky traps to reduce psyllids"],
+      "chemical": ["No cure for the bacterium. Control the psyllid vector with insecticides such as imidacloprid or thiamethoxam, only as advised by experts."],
+      "prevention": ["Plant only certified disease-free nursery plants", "Monitor new flushes for psyllids", "Balanced nutrition including micronutrients"],
+      "summary_hi": "यह जीवाणु रोग सिट्रस सिल्लिड कीट से फैलता है, पत्तियाँ असमान पीली पड़ती हैं। इसका इलाज नहीं है, संक्रमित पेड़ हटाएँ और कीट नियंत्रित करें।"
+    },
+    "Peach___Bacterial_spot": {
+      "name_en": "Peach bacterial spot", "name_hi": "आड़ू का जीवाणु धब्बा रोग", "type": "bacterial", "severity": "medium",
+      "cause": "Bacterium Xanthomonas arboricola pv. pruni. Spreads by rain splash and wind, especially on sandy soils.",
+      "symptoms": ["Small angular purple-brown spots on leaves", "Spot centres fall out leaving 'shot holes'", "Cracked, pitted spots on fruit"],
+      "organic": ["Prune infected twigs in dry weather", "Avoid overhead irrigation"],
+      "chemical": ["Copper-based bactericides labelled for peach (peach leaves are sensitive – follow label strictly)"],
+      "prevention": ["Plant tolerant varieties", "Windbreaks to reduce leaf injury", "Balanced nitrogen"],
+      "summary_hi": "पत्तियों पर छोटे बैंगनी-भूरे धब्बे बनते हैं जो बाद में छेद बन जाते हैं। संक्रमित टहनियाँ काटें और लेबल के अनुसार कॉपर दवा का प्रयोग करें।"
+    },
+    "Pepper,_bell___Bacterial_spot": {
+      "name_en": "Capsicum bacterial spot", "name_hi": "शिमला मिर्च का जीवाणु धब्बा रोग", "type": "bacterial", "severity": "high",
+      "cause": "Bacteria Xanthomonas species. Carried on seed and spread by rain splash, tools and hands.",
+      "symptoms": ["Small water-soaked spots that turn brown with yellow halo", "Leaves yellow and drop", "Raised scabby spots on fruit"],
+      "organic": ["Remove infected plants and leaves", "Hot-water seed treatment before sowing (ask KVK for method)", "Do not work in the field when plants are wet"],
+      "chemical": ["Copper oxychloride or copper hydroxide, often combined with mancozeb"],
+      "prevention": ["Certified disease-free seed and seedlings", "2–3 year rotation away from tomato/chilli", "Drip irrigation instead of sprinklers"],
+      "summary_hi": "पत्तियों पर पीले घेरे वाले भूरे धब्बे बनते हैं और पत्तियाँ गिरती हैं। स्वस्थ बीज लें, संक्रमित पौधे हटाएँ और कॉपर दवा का प्रयोग करें।"
+    },
+    "Potato___Early_blight": {
+      "name_en": "Potato early blight", "name_hi": "आलू का अगेती झुलसा रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Alternaria solani. Survives in soil and residue; attacks weak or older leaves in warm weather.",
+      "symptoms": ["Dark brown spots with rings like a target ('bull's-eye') on older leaves", "Yellowing around spots", "Leaves dry from the bottom upward"],
+      "organic": ["Remove infected lower leaves", "Spray neem-based products or Trichoderma/Pseudomonas bio-formulations, as per label", "Adequate potash and nitrogen to keep plants strong"],
+      "chemical": ["Mancozeb, chlorothalonil or azoxystrobin at first symptoms"],
+      "prevention": ["Healthy seed tubers", "Crop rotation (avoid tomato/brinjal before potato)", "Avoid water stress"],
+      "summary_hi": "पुरानी पत्तियों पर गोल छल्लों वाले भूरे धब्बे बनते हैं। नीचे की संक्रमित पत्तियाँ हटाएँ और शुरुआत में ही फफूंदनाशक का छिड़काव करें।"
+    },
+    "Potato___Late_blight": {
+      "name_en": "Potato late blight", "name_hi": "आलू का पछेती झुलसा रोग", "type": "oomycete (water mould)", "severity": "high",
+      "cause": "Phytophthora infestans. Spreads extremely fast in cool (10–20 °C), cloudy, foggy and wet weather.",
+      "symptoms": ["Water-soaked pale to dark brown patches on leaf tips and edges", "White mould under leaves in the morning", "Whole field can collapse within days; tubers rot"],
+      "organic": ["Remove and destroy infected plants immediately (do not leave in field)", "Earth up soil around plants to protect tubers", "Copper sprays allowed in organic farming, as per label"],
+      "chemical": ["Preventive: mancozeb before disease appears when weather is cool and foggy", "Curative: cymoxanil + mancozeb, metalaxyl-M + mancozeb or dimethomorph combinations – as advised by KVK"],
+      "prevention": ["Certified disease-free seed tubers", "Follow local late-blight weather warnings", "Destroy cull piles and volunteer potatoes"],
+      "summary_hi": "यह बहुत तेज़ फैलने वाला रोग है, ठंडे और कोहरे वाले मौसम में पत्तियाँ काली-भूरी होकर झुलस जाती हैं। तुरंत संक्रमित पौधे हटाएँ और KVK की सलाह से दवा छिड़कें।"
+    },
+    "Squash___Powdery_mildew": {
+      "name_en": "Squash / pumpkin powdery mildew", "name_hi": "कद्दू वर्गीय फसलों का चूर्णिल आसिता (पाउडरी मिल्ड्यू)", "type": "fungal", "severity": "medium",
+      "cause": "Fungi Podosphaera xanthii / Erysiphe cichoracearum. Favoured by dry days, humid nights and shade.",
+      "symptoms": ["White powdery spots on upper leaf surface that spread to cover the leaf", "Leaves yellow and dry", "Smaller fruits"],
+      "organic": ["Spray wettable sulphur, potassium bicarbonate, or diluted milk solution (research-backed home remedy)", "Remove badly infected leaves"],
+      "chemical": ["Hexaconazole, myclobutanil or similar systemic fungicides, as per label"],
+      "prevention": ["Resistant varieties", "Wide spacing and full sunlight", "Start control at the first white spots"],
+      "summary_hi": "पत्तियों के ऊपर सफ़ेद पाउडर जैसी परत बनती है। सल्फर या पोटैशियम बाइकार्बोनेट का छिड़काव करें और ज़्यादा संक्रमित पत्तियाँ हटाएँ।"
+    },
+    "Strawberry___Leaf_scorch": {
+      "name_en": "Strawberry leaf scorch", "name_hi": "स्ट्रॉबेरी का पत्ती झुलसन रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Diplocarpon earlianum. Survives on old leaves; spreads by water splash.",
+      "symptoms": ["Many small dark purple spots on leaves", "Spots join, leaf looks burnt/scorched and dries"],
+      "organic": ["Remove and destroy old infected leaves after harvest", "Use mulch to reduce soil splash", "Copper sprays as per label"],
+      "chemical": ["Captan or copper-based fungicides"],
+      "prevention": ["Plant healthy runners", "Avoid overhead watering", "Renovate beds every 2–3 years"],
+      "summary_hi": "पत्तियों पर बहुत से छोटे बैंगनी धब्बे बनते हैं और पत्ती जली हुई दिखती है। पुरानी पत्तियाँ हटाएँ और मल्चिंग करें।"
+    },
+    "Tomato___Bacterial_spot": {
+      "name_en": "Tomato bacterial spot", "name_hi": "टमाटर का जीवाणु धब्बा रोग", "type": "bacterial", "severity": "high",
+      "cause": "Bacteria Xanthomonas species. Seed-borne; spreads by rain splash, overhead watering and handling wet plants.",
+      "symptoms": ["Small dark, greasy-looking spots on leaves, often with yellow halo", "Leaf edges and tips dry", "Raised, scabby spots on fruit"],
+      "organic": ["Remove infected leaves and plants", "Hot-water seed treatment (ask KVK for method)", "Avoid working in the field when leaves are wet"],
+      "chemical": ["Copper oxychloride or copper hydroxide, often mixed with mancozeb"],
+      "prevention": ["Disease-free seed and nursery", "Crop rotation away from tomato/chilli/capsicum", "Drip irrigation"],
+      "summary_hi": "पत्तियों पर छोटे काले चिकने धब्बे बनते हैं जिनके चारों ओर पीला घेरा होता है। स्वस्थ बीज लें और कॉपर दवा का प्रयोग करें।"
+    },
+    "Tomato___Early_blight": {
+      "name_en": "Tomato early blight", "name_hi": "टमाटर का अगेती झुलसा रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Alternaria solani. Survives in soil and plant debris; worse in warm, humid weather and on stressed plants.",
+      "symptoms": ["Brown spots with concentric rings ('target' look) on older leaves", "Yellowing around spots, lower leaves drop", "Dark sunken spots near fruit stem"],
+      "organic": ["Remove lower infected leaves", "Mulch to stop soil splashing onto leaves", "Trichoderma or Pseudomonas fluorescens bio-formulations, as per label"],
+      "chemical": ["Mancozeb, chlorothalonil, azoxystrobin or difenoconazole at first symptoms"],
+      "prevention": ["Staking and pruning for air flow", "Crop rotation", "Balanced fertiliser"],
+      "summary_hi": "पुरानी पत्तियों पर गोल छल्लों वाले भूरे धब्बे बनते हैं। नीचे की पत्तियाँ हटाएँ, मल्चिंग करें और समय पर दवा छिड़कें।"
+    },
+    "Tomato___Late_blight": {
+      "name_en": "Tomato late blight", "name_hi": "टमाटर का पछेती झुलसा रोग", "type": "oomycete (water mould)", "severity": "high",
+      "cause": "Phytophthora infestans. Spreads very fast in cool, wet, foggy weather.",
+      "symptoms": ["Large, irregular, greasy grey-green to brown patches on leaves", "White fuzzy growth under leaves in humid mornings", "Firm brown rot on fruit"],
+      "organic": ["Remove and destroy infected plants immediately", "Avoid overhead watering", "Copper sprays allowed in organic farming, as per label"],
+      "chemical": ["Preventive: mancozeb in cool, foggy weather", "Curative: cymoxanil + mancozeb, metalaxyl-M + mancozeb or dimethomorph combinations – as advised by KVK"],
+      "prevention": ["Do not grow next to potato fields", "Wide spacing and staking", "Watch local weather warnings"],
+      "summary_hi": "ठंडे और नमी वाले मौसम में पत्तियों पर बड़े भूरे-काले धब्बे बनते हैं और रोग तेज़ी से फैलता है। संक्रमित पौधे तुरंत हटाएँ और KVK की सलाह लें।"
+    },
+    "Tomato___Leaf_Mold": {
+      "name_en": "Tomato leaf mould", "name_hi": "टमाटर का पत्ती फफूंद रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Passalora fulva (Fulvia fulva). Very common in polyhouses with high humidity (>85%).",
+      "symptoms": ["Pale yellow spots on upper leaf surface", "Olive-green to brown velvety mould under the leaf", "Leaves curl and dry"],
+      "organic": ["Increase ventilation in polyhouse", "Remove lower infected leaves", "Avoid wetting leaves"],
+      "chemical": ["Chlorothalonil, mancozeb or copper-based fungicides"],
+      "prevention": ["Keep humidity below 85%", "Resistant varieties", "Wider spacing"],
+      "summary_hi": "पत्ती के ऊपर पीले धब्बे और नीचे भूरी मखमली फफूंद दिखती है। पॉलीहाउस में हवा का आवागमन बढ़ाएँ और नमी कम रखें।"
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "name_en": "Tomato Septoria leaf spot", "name_hi": "टमाटर का सेप्टोरिया पत्ती धब्बा रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Septoria lycopersici. Survives on debris and weeds; spreads by water splash.",
+      "symptoms": ["Many small round spots with dark border and grey-white centre", "Tiny black dots in spot centres", "Lower leaves yellow and fall"],
+      "organic": ["Remove infected lower leaves", "Mulch and drip irrigation", "Copper sprays as per label"],
+      "chemical": ["Chlorothalonil or mancozeb"],
+      "prevention": ["Crop rotation", "Weed control (especially nightshade weeds)", "Clean up debris after harvest"],
+      "summary_hi": "पत्तियों पर बहुत सारे छोटे गोल धब्बे बनते हैं जिनका बीच का भाग धूसर-सफ़ेद होता है। नीचे की पत्तियाँ हटाएँ और मल्चिंग करें।"
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "name_en": "Two-spotted spider mite", "name_hi": "टमाटर में लाल मकड़ी (दो-धब्बेदार माइट)", "type": "pest (mite)", "severity": "medium",
+      "cause": "Tiny mite Tetranychus urticae. Multiplies fast in hot, dry, dusty conditions.",
+      "symptoms": ["Fine yellow-white speckles (stippling) on leaves", "Fine webbing under leaves", "Leaves turn bronze and dry"],
+      "organic": ["Spray plain water forcefully under leaves", "Neem oil (azadirachtin) sprays, as per label", "Conserve predatory mites and lady beetles"],
+      "chemical": ["Acaricides such as abamectin, spiromesifen or fenpyroximate; wettable sulphur also controls mites"],
+      "prevention": ["Avoid water stress", "Reduce dust on field paths", "Remove heavily infested leaves early"],
+      "summary_hi": "बहुत छोटे माइट पत्तियों का रस चूसते हैं जिससे पत्तियों पर सफ़ेद-पीले बिंदु और जाले बनते हैं। पत्तियों के नीचे पानी की तेज़ धार और नीम तेल का छिड़काव करें।"
+    },
+    "Tomato___Target_Spot": {
+      "name_en": "Tomato target spot", "name_hi": "टमाटर का टारगेट स्पॉट रोग", "type": "fungal", "severity": "medium",
+      "cause": "Fungus Corynespora cassiicola. Favoured by warm, humid weather and dense canopy.",
+      "symptoms": ["Brown spots with light centre and rings, on leaves and fruit", "Spots merge and leaves drop"],
+      "organic": ["Prune lower leaves and improve air flow", "Remove crop debris"],
+      "chemical": ["Chlorothalonil, mancozeb or azoxystrobin"],
+      "prevention": ["Avoid dense planting", "Crop rotation", "Avoid overhead irrigation"],
+      "summary_hi": "पत्तियों और फलों पर छल्लों वाले भूरे धब्बे बनते हैं। हवा का आवागमन बढ़ाएँ और फसल अवशेष नष्ट करें।"
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "name_en": "Tomato yellow leaf curl virus (TYLCV)", "name_hi": "टमाटर का पीला पत्ती मोड़क विषाणु रोग", "type": "viral", "severity": "high",
+      "cause": "Virus spread by whitefly (Bemisia tabaci). Infected plants cannot be cured.",
+      "symptoms": ["Small leaves curled upward with yellow edges", "Stunted, bushy plants", "Very few flowers and fruits"],
+      "organic": ["Uproot and destroy infected plants early", "Yellow sticky traps to catch whiteflies", "Neem oil sprays to reduce whiteflies", "Raise nursery under insect-proof net"],
+      "chemical": ["No medicine cures the virus. Control whiteflies with insecticides such as imidacloprid, thiamethoxam or pyriproxyfen, only as advised by KVK."],
+      "prevention": ["Grow TYLCV-tolerant varieties", "Remove weeds that host whiteflies", "Barrier crops such as maize around the field"],
+      "summary_hi": "यह विषाणु रोग सफ़ेद मक्खी से फैलता है, पत्तियाँ छोटी, पीली और ऊपर की ओर मुड़ जाती हैं। इसका इलाज नहीं है, संक्रमित पौधे उखाड़ें और सफ़ेद मक्खी नियंत्रित करें।"
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "name_en": "Tomato mosaic virus (ToMV)", "name_hi": "टमाटर का मोज़ेक विषाणु रोग", "type": "viral", "severity": "high",
+      "cause": "Very stable virus spread by touch, tools, infected seed and tobacco products.",
+      "symptoms": ["Light and dark green mosaic pattern on leaves", "Leaves wrinkled, narrow or fern-like", "Uneven ripening of fruit"],
+      "organic": ["Uproot and destroy infected plants", "Wash hands with soap before handling plants; do not smoke/chew tobacco in the field", "Disinfect tools"],
+      "chemical": ["No chemical can cure a virus. Focus on removal and hygiene."],
+      "prevention": ["Certified virus-free seed", "Resistant varieties", "Remove infected plants early to stop spread"],
+      "summary_hi": "पत्तियों पर हल्के और गहरे हरे रंग का चितकबरा (मोज़ेक) पैटर्न बनता है। इसका इलाज नहीं है, संक्रमित पौधे हटाएँ और औज़ार व हाथ साफ़ रखें।"
+    }
+  }
+}

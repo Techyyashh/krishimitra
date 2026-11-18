@@ -1,0 +1,12 @@
+# Local full-stack test:  docker compose up --build   →  http://localhost:8000
+services:
+  krishimitra:
+    build: .
+    ports:
+      - "8000:7860"
+    env_file:
+      - .env
+    volumes:
+      - ./models:/app/models   # your exported ONNX model
+      - ./data:/app/data       # SQLite stats/feedback database
+    restart: unless-stopped

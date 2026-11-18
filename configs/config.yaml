@@ -1,0 +1,54 @@
+# KrishiMitra – central configuration.
+# Paths are relative to the project root. Secrets NEVER go here (use .env).
+
+project:
+  name: krishimitra
+  version: 1.0.0
+  seed: 42                         # same seed = same results every run
+
+data:
+  plantvillage_dir: data/raw/plantvillage/color
+  plantdoc_dir: data/raw/plantdoc
+  splits_dir: data/processed/splits
+  image_size: 224                  # EfficientNet-B0 / MobileNetV3 input size
+  split:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+training:
+  arch: efficientnet_b0            # or mobilenetv3_large_100
+  batch_size: 32
+  epochs: 15                       # total epochs (head + fine-tune)
+  freeze_epochs: 2                 # epochs training only the classifier head
+  head_lr: 0.001
+  finetune_lr: 0.0003
+  weight_decay: 0.0001
+  label_smoothing: 0.1
+  early_stopping_patience: 4
+  num_workers: 2
+  output_dir: models
+  reports_dir: reports
+
+inference:
+  onnx_path: models/krishimitra.onnx
+  classes_path: models/classes.json
+  confidence_threshold: 0.60       # below this → "Not sure, retake photo"
+  top_k: 3
+  leaf_min_ratio: 0.15             # min share of plant-coloured pixels to accept a photo
+
+llm:
+  model: claude-opus-5-5           # change to a cheaper model if you want lower cost
+  max_tokens: 4000
+  effort: low                      # short, simple farmer advice does not need deep reasoning
+
+knowledge_base:
+  path: knowledge_base/disease_info.json
+  docs_dir: knowledge_base/docs    # extra trusted .md/.txt files for the chat assistant
+
+api:
+  max_upload_mb: 8
+  allowed_origins: ["*"]           # restrict to your real domain in production
+  rate_limit: "30/minute"          # per IP, for /predict
+  llm_rate_limit: "10/minute"      # per IP, for /advice, /chat, /tts
+  db_path: data/krishimitra.db

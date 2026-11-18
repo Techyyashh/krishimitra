@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies (serving + dev only – no PyTorch needed for tests)
+        run: pip install -r requirements-serve.txt -r requirements-dev.txt
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Tests with coverage
+        env:
+          RATE_LIMIT_ENABLED: "false"
+          LLM_ENABLED: "false"
+        run: pytest --cov=src/inference --cov=src/llm --cov=api --cov-report=term-missing
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t krishimitra:ci .

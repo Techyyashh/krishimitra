@@ -1,0 +1,130 @@
+/* KrishiMitra – farmer-friendly, mobile-first styles. Big buttons, high contrast, few words. */
+:root {
+  --green: #1f7a3a;
+  --green-dark: #155c2b;
+  --green-light: #e8f5ec;
+  --amber: #b76e00;
+  --red: #b3261e;
+  --text: #1c1f1d;
+  --muted: #5b625e;
+  --bg: #f4f7f2;
+  --card: #ffffff;
+  --border: #d8e0da;
+  --radius: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --green-light: #173822;
+    --text: #e8ede9;
+    --muted: #a7b0aa;
+    --bg: #101411;
+    --card: #1a201c;
+    --border: #2c352f;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+.hidden { display: none !important; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; padding-top: max(12px, env(safe-area-inset-top));
+  background: var(--green); color: #fff;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand img { border-radius: 8px; background: #fff; }
+.brand h1 { margin: 0; font-size: 1.25rem; }
+.tagline { margin: 0; font-size: 0.8rem; opacity: 0.9; }
+.lang-btn {
+  min-height: 44px; padding: 6px 14px; border-radius: 999px; border: 2px solid #fff;
+  background: transparent; color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer;
+}
+
+.banner { padding: 10px 16px; background: var(--amber); color: #fff; text-align: center; font-weight: 600; }
+
+main { max-width: 640px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.card h2 { margin: 0 0 12px; font-size: 1.15rem; color: var(--green); }
+@media (prefers-color-scheme: dark) { .card h2 { color: #7fd69a; } }
+
+.tips { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tips li { background: var(--green-light); border-radius: 999px; padding: 4px 12px; font-size: 0.9rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 10px 18px; border-radius: 12px; border: 2px solid var(--green);
+  background: var(--card); color: var(--green); font: inherit; font-weight: 600; cursor: pointer;
+}
+.btn:focus-visible, .lang-btn:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:active { background: var(--green-dark); }
+.btn-secondary { background: var(--green-light); }
+.btn-big { width: 100%; min-height: 60px; font-size: 1.15rem; margin-top: 10px; }
+.btn-small { min-height: 44px; padding: 6px 12px; font-size: 1rem; }
+.btn[disabled] { opacity: 0.6; cursor: wait; }
+
+.preview { display: block; width: 100%; max-height: 360px; object-fit: contain; border-radius: 12px; margin-top: 12px; background: #000; }
+
+.loading { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-weight: 600; }
+.spinner {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 4px solid var(--green-light); border-top-color: var(--green);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 3s; } }
+
+.error { color: var(--red); font-weight: 600; margin: 12px 0 0; }
+.status { font-weight: 600; margin-bottom: 8px; }
+.status.warn { color: var(--amber); }
+.status.bad { color: var(--red); }
+
+.result-main .crop { margin: 0; color: var(--muted); }
+.result-main .disease { margin: 2px 0 10px; font-size: 1.5rem; font-weight: 700; }
+.confidence { display: flex; align-items: center; gap: 10px; }
+.bar { flex: 1; height: 14px; background: var(--green-light); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0; background: var(--green); transition: width 0.5s; }
+.badge { display: inline-block; margin-top: 10px; padding: 4px 12px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; }
+.badge.high { background: #fde7e5; color: var(--red); }
+.badge.medium { background: #fff1d6; color: var(--amber); }
+.badge.low, .badge.none { background: var(--green-light); color: var(--green); }
+
+details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.info h3 { font-size: 1rem; margin: 14px 0 4px; }
+.info ul { margin: 0; padding-left: 22px; }
+.disclaimer { font-size: 0.9rem; color: var(--muted); border-left: 4px solid var(--amber); padding-left: 10px; }
+
+.feedback { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.thanks { color: var(--green); font-weight: 600; }
+
+.advice { white-space: pre-wrap; margin-top: 12px; }
+
+.chat-log { display: grid; gap: 8px; margin-bottom: 10px; max-height: 360px; overflow-y: auto; }
+.msg { padding: 10px 12px; border-radius: 12px; white-space: pre-wrap; }
+.msg.user { background: var(--green); color: #fff; justify-self: end; max-width: 85%; }
+.msg.bot { background: var(--green-light); justify-self: start; max-width: 95%; }
+.chat-form { display: flex; gap: 8px; }
+.chat-form input {
+  flex: 1; min-height: 48px; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--border);
+  font: inherit; background: var(--card); color: var(--text); min-width: 0;
+}
+
+.history { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.history li { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--border); padding: 6px 0; font-size: 0.95rem; }
+.muted { color: var(--muted); }
+
+.footer { max-width: 640px; margin: 0 auto; padding: 8px 16px 32px; font-size: 0.85rem; color: var(--muted); text-align: center; }
+.footer a { color: inherit; }
