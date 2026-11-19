@@ -2,11 +2,11 @@
 
 | Question | Value |
 |---|---|
-| Domain | `YOUR_USERNAME-krishimitra.hf.space` (or your custom domain) |
+| Domain | `techyyashh-krishimitra.hf.space` (or your custom domain) |
 | URL path | `/` |
 | Application name | `KrishiMitra – Crop Doctor` |
 | Short name | `KrishiMitra` |
-| Application ID | `com.YOUR_USERNAME.krishimitra` (lowercase, permanent) |
+| Application ID | `com.techyyashh.krishimitra` (lowercase, permanent) |
 | Starting version code | `1` |
 | Display mode | `standalone` |
 | Orientation | `portrait` |

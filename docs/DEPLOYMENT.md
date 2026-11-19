@@ -21,26 +21,26 @@ Hugging Face Hub (model: krishimitra.onnx) ◄───────────�
 3. Upload:
    ```powershell
    $env:HF_TOKEN="hf_xxx"
-   python scripts/upload_model.py --repo YOUR_USERNAME/krishimitra-model
+   python scripts/upload_model.py --repo Techyyashh/krishimitra-model
    ```
-4. Check `https://huggingface.co/YOUR_USERNAME/krishimitra-model`.
+4. Check `https://huggingface.co/Techyyashh/krishimitra-model`.
 
 ## 2. Create the Space (hosting)
 First deploy from your laptop:
 ```powershell
-$env:HF_TOKEN="hf_xxx"; $env:HF_SPACE_ID="YOUR_USERNAME/krishimitra"
+$env:HF_TOKEN="hf_xxx"; $env:HF_SPACE_ID="Techyyashh/krishimitra"
 python scripts/deploy_hf_space.py --dry-run   # see what will be uploaded
 python scripts/deploy_hf_space.py
 ```
 Then on the Space page → **Settings**:
 | Type | Name | Value |
 |---|---|---|
-| Variable | `HF_MODEL_REPO` | `YOUR_USERNAME/krishimitra-model` |
+| Variable | `HF_MODEL_REPO` | `Techyyashh/krishimitra-model` |
 | Secret | `ANTHROPIC_API_KEY` | your Claude API key (optional) |
-| Variable | `ALLOWED_ORIGINS` | your site URL, e.g. `https://YOUR_USERNAME-krishimitra.hf.space` |
+| Variable | `ALLOWED_ORIGINS` | your site URL, e.g. `https://techyyashh-krishimitra.hf.space` |
 
 The Space builds the Docker image (≈3–5 min). Your app is live at
-`https://YOUR_USERNAME-krishimitra.hf.space` and API docs at `/api/docs`.
+`https://techyyashh-krishimitra.hf.space` and API docs at `/api/docs`.
 
 > **Free-tier sleep:** free Spaces sleep after ~48 h without visitors and take ~1 min to wake up.
 > UptimeRobot pings (step 5) keep it awake during your demo period.
@@ -52,7 +52,7 @@ The Space builds the Docker image (≈3–5 min). Your app is live at
 ## 3. Automatic deploys (CI/CD)
 GitHub repo → Settings → Secrets and variables → Actions:
 - **Secret** `HF_TOKEN` = your write token
-- **Variable** `HF_SPACE_ID` = `YOUR_USERNAME/krishimitra`
+- **Variable** `HF_SPACE_ID` = `Techyyashh/krishimitra`
 
 Now every push to `main`: `CI` runs lint + tests + Docker build → if green, `Deploy` uploads the app to the Space.
 

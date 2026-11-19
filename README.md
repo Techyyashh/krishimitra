@@ -4,11 +4,11 @@
 ### AI Crop Disease Detection & Farmer Advisor
 **Click a leaf, save your crop. · पत्ती की फ़ोटो लें, फसल बचाएँ।**
 
-![CI](https://github.com/YOUR_USERNAME/krishimitra/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Techyyashh/krishimitra/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-[🌐 Live demo](https://huggingface.co/spaces/YOUR_USERNAME/krishimitra) · [📱 Play Store](#) · [🤗 Model](https://huggingface.co/YOUR_USERNAME/krishimitra-model) · [📖 API docs](https://YOUR_USERNAME-krishimitra.hf.space/api/docs)
+[🌐 Live demo](https://huggingface.co/spaces/Techyyashh/krishimitra) · [📱 Play Store](#) · [🤗 Model](https://huggingface.co/Techyyashh/krishimitra-model) · [📖 API docs](https://techyyashh-krishimitra.hf.space/api/docs)
 
 </div>
 

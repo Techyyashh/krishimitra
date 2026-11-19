@@ -9,7 +9,7 @@ datasets: [plantvillage, plantdoc]
 # KrishiMitra – crop leaf disease classifier
 
 Classifies a single leaf photo into **38 classes** (14 crops, healthy + 26 diseases) from the PlantVillage dataset.
-Used by the [KrishiMitra app](https://huggingface.co/spaces/YOUR_USERNAME/krishimitra).
+Used by the [KrishiMitra app](https://huggingface.co/spaces/Techyyashh/krishimitra).
 
 ## Model
 - Architecture: EfficientNet-B0 (timm, ImageNet-pretrained), two-phase transfer learning

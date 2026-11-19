@@ -11,7 +11,7 @@ and every website update reaches the app instantly. No Play Store re-review need
 💰 **Cost:** Google Play developer registration – **US $25 one-time**.
 
 ## 1. Prerequisites
-- Your PWA is live on HTTPS (see `DEPLOYMENT.md`), e.g. `https://YOUR_USERNAME-krishimitra.hf.space`
+- Your PWA is live on HTTPS (see `DEPLOYMENT.md`), e.g. `https://techyyashh-krishimitra.hf.space`
 - Chrome DevTools → Lighthouse → "Installable" passes
 - Install **Node.js LTS** and **JDK 17**:
   ```powershell
@@ -23,10 +23,10 @@ and every website update reaches the app instantly. No Play Store re-review need
 ## 2. Create the Android project
 ```powershell
 cd mobile/twa
-bubblewrap init --manifest https://YOUR_USERNAME-krishimitra.hf.space/manifest.webmanifest
+bubblewrap init --manifest https://techyyashh-krishimitra.hf.space/manifest.webmanifest
 ```
 Answer the questions (see `mobile/twa/twa-settings.md` for recommended values):
-- Application ID: `com.YOUR_USERNAME.krishimitra` (cannot be changed later!)
+- Application ID: `com.techyyashh.krishimitra` (cannot be changed later!)
 - App name: `KrishiMitra`, launcher name `KrishiMitra`
 - Theme colour `#1f7a3a`, background `#f4f7f2`
 - Let Bubblewrap **create a new signing key**. Save `android.keystore` and its passwords somewhere safe.
@@ -46,7 +46,7 @@ Produces `app-release-bundle.aab` (upload to Play) and `app-release-signed.apk` 
    After the first upload, also copy the **Play App Signing** SHA-256 from Play Console → Setup → App integrity.
 2. Copy `mobile/twa/assetlinks.template.json` to `web/.well-known/assetlinks.json`, put in your package name
    and **both** fingerprints, commit and deploy.
-3. Check: `https://YOUR_USERNAME-krishimitra.hf.space/.well-known/assetlinks.json` returns the JSON.
+3. Check: `https://techyyashh-krishimitra.hf.space/.well-known/assetlinks.json` returns the JSON.
 
 ## 5. Play Console
 1. [play.google.com/console](https://play.google.com/console) → create developer account (personal) → pay $25 → verify identity.

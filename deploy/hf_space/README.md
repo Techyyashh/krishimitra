@@ -16,6 +16,6 @@ Take a photo of a crop leaf → the AI detects the disease → get simple advice
 
 - Web app: open this Space (installable on Android as an app)
 - API docs: `/api/docs`
-- Source code: [GitHub](https://github.com/YOUR_USERNAME/krishimitra)
+- Source code: [GitHub](https://github.com/Techyyashh/krishimitra)
 
 ⚠️ General guidance only. Confirm with your local Krishi Vigyan Kendra (KVK) before using any chemical.
