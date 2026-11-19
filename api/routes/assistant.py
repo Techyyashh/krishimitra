@@ -1,5 +1,4 @@
 """AI assistant endpoints: advice, chat and text-to-speech."""
-from __future__ import annotations
 
 from fastapi import APIRouter, HTTPException, Request, Response
 from fastapi.concurrency import run_in_threadpool

@@ -1,5 +1,4 @@
 """POST /api/predict – photo in, disease + info card out."""
-from __future__ import annotations
 
 from fastapi import APIRouter, File, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool

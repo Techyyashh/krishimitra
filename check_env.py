@@ -5,6 +5,11 @@ Run:  python check_env.py
 import importlib
 import sys
 
+# Windows consoles may default to cp1252, which cannot print emoji.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 PACKAGES = {
     "torch": "torch", "torchvision": "torchvision", "timm": "timm", "albumentations": "albumentations",
     "opencv": "cv2", "pillow": "PIL", "numpy": "numpy", "pandas": "pandas", "scikit-learn": "sklearn",

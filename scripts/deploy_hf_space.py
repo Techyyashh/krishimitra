@@ -18,6 +18,8 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # emoji-safe on Windows consoles
 INCLUDE = ["Dockerfile", ".dockerignore", "requirements-serve.txt", "configs", "src", "api", "knowledge_base", "web", "LICENSE"]
 IGNORE = shutil.ignore_patterns("__pycache__", "*.pyc", "*.pth", "*.onnx", "*.db")
 

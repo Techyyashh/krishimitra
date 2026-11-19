@@ -1,5 +1,4 @@
 """Health check, labels list, feedback and anonymous usage statistics."""
-from __future__ import annotations
 
 from fastapi import APIRouter, Request
 
