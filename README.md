@@ -8,7 +8,10 @@
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-[🌐 Live demo](https://huggingface.co/spaces/Techyyashh/krishimitra) · [📱 Play Store](#) · [🤗 Model](https://huggingface.co/Techyyashh/krishimitra-model) · [📖 API docs](https://techyyashh-krishimitra.hf.space/api/docs)
+[🌐 **Live demo**](https://techyyashh-krishimitra.static.hf.space) · [🤗 Space](https://huggingface.co/spaces/Techyyashh/krishimitra) · [🤗 Model](https://huggingface.co/Techyyashh/krishimitra-model) · 📱 Play Store (coming soon)
+
+> The live demo runs the AI **inside your browser** (onnxruntime-web): photos never leave the phone and it works
+> offline after the first visit. AI chat and Claude-written advice need the full server version (`uvicorn api.main:app`).
 
 </div>
 
@@ -115,7 +118,8 @@ docker compose up --build              # full container → http://localhost:800
 ### Deploy & publish
 | Step | Guide |
 |---|---|
-| Hugging Face Space (free hosting) + model on the Hub + CI/CD | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) |
+| **Free** live demo (AI in the browser): `python scripts/build_static.py --deploy --space Techyyashh/krishimitra` | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) |
+| Full server version (Docker: Render, or Hugging Face with PRO) + model on the Hub + CI/CD | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) |
 | Android app on Google Play | [docs/ANDROID_PLAY_STORE.md](docs/ANDROID_PLAY_STORE.md) |
 | Launch posts, pitch, resume lines, viva questions | [docs/LAUNCH_KIT.md](docs/LAUNCH_KIT.md) |
 
@@ -145,7 +149,7 @@ krishimitra/
 ├── knowledge_base/    disease_info.json (38 classes, EN + HI) + extra docs for chat
 ├── notebooks/         Colab training notebook
 ├── scripts/           deploy to HF Space, upload model, generate icons
-├── deploy/hf_space/   Space README (config header)
+├── deploy/hf_space/   Docker Space README (server version)
 ├── mobile/twa/        Android (Trusted Web Activity) config templates
 ├── docs/              deployment, Play Store, architecture, launch kit
 ├── tests/             pytest (no GPU / PyTorch needed)

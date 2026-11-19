@@ -1,6 +1,6 @@
 /* Service worker: makes the app installable and loads instantly on slow networks.
    App shell = cache-first. API calls = always network (results must be fresh). */
-const CACHE = "krishimitra-v1";
+const CACHE = "krishimitra-v2";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "config.js", "manifest.webmanifest", "privacy.html",
   "icons/icon-192.png", "icons/icon-512.png",
@@ -21,7 +21,9 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  if (request.method !== "GET" || url.pathname.startsWith("/api/") || url.origin !== self.location.origin) return;
+  // Also cache the AI engine from the CDN, so browser mode works offline after the first visit.
+  const cacheable = url.origin === self.location.origin || url.hostname === "cdn.jsdelivr.net";
+  if (request.method !== "GET" || url.pathname.startsWith("/api/") || !cacheable) return;
 
   event.respondWith(
     caches.match(request).then((cached) => {

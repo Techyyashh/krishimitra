@@ -1,8 +1,10 @@
-name: Deploy to Hugging Face Space
+name: Deploy live demo (Hugging Face Static Space)
 
 # Runs after CI passes on main. Set up once (see docs/DEPLOYMENT.md):
-#   Repository secret   HF_TOKEN     – a Hugging Face "write" token
-#   Repository variable HF_SPACE_ID  – e.g. your-username/krishimitra
+#   Repository secret   HF_TOKEN       – a Hugging Face "write" token
+#   Repository variable HF_SPACE_ID    – e.g. Techyyashh/krishimitra
+#   Repository variable HF_MODEL_REPO  – e.g. Techyyashh/krishimitra-model
+# The model is not in Git, so it is downloaded from the Hub before building the static site.
 on:
   workflow_run:
     workflows: ["CI"]
@@ -23,8 +25,13 @@ jobs:
 
       - run: pip install huggingface_hub==0.26.2
 
-      - name: Upload app to the Space
+      - name: Download the model from the Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_SPACE_ID: ${{ vars.HF_SPACE_ID }}
-        run: python scripts/deploy_hf_space.py
+        run: |
+          python -c "from huggingface_hub import hf_hub_download as d; [d('${{ vars.HF_MODEL_REPO }}', f, local_dir='models') for f in ('krishimitra.onnx', 'classes.json')]"
+
+      - name: Build and upload the static site
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/build_static.py --deploy --space "${{ vars.HF_SPACE_ID }}"

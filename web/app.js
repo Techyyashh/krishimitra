@@ -3,6 +3,8 @@
   "use strict";
 
   const API = (window.KRISHIMITRA_API_BASE || "").replace(/\/$/, "");
+  // "server" = FastAPI does the AI; "browser" = the model runs on the phone (web/local.js), no server needed.
+  const BROWSER_MODE = window.KRISHIMITRA_MODE === "browser" && Boolean(window.KrishiLocal);
   const $ = (id) => document.getElementById(id);
 
   // ---------- Translations ----------
@@ -134,10 +136,14 @@
     show($("loading"));
     ["resultCard", "adviceCard", "chatCard"].forEach((id) => show($(id), false));
     try {
-      const form = new FormData();
-      form.append("file", await compressImage(selectedFile), "leaf.jpg");
-      const res = await api("/predict", { method: "POST", body: form });
-      last = await res.json();
+      if (BROWSER_MODE) {
+        last = await window.KrishiLocal.predict(await compressImage(selectedFile));
+      } else {
+        const form = new FormData();
+        form.append("file", await compressImage(selectedFile), "leaf.jpg");
+        const res = await api("/predict", { method: "POST", body: form });
+        last = await res.json();
+      }
       adviceText = "";
       $("adviceText").textContent = "";
       show($("listenBtn"), false);
@@ -165,8 +171,9 @@
     show($("topDetails"), hasPrediction);
     show($("infoBox"), hasPrediction);
     show($("adviceCard"), hasPrediction);
-    show($("chatCard"), hasPrediction);
-    show(document.querySelector(".feedback"), hasPrediction);
+    // Chat and feedback need the server, so they are hidden in browser mode.
+    show($("chatCard"), hasPrediction && !BROWSER_MODE);
+    show(document.querySelector(".feedback"), hasPrediction && !BROWSER_MODE);
     show($("feedbackThanks"), false);
     $("disclaimer").textContent = hasPrediction && data.info ? (lang === "hi" ? I18N.hi.footer : I18N.en.footer) : "";
     if (!hasPrediction) return;
@@ -227,11 +234,12 @@
     $("adviceBtn").disabled = true;
     show($("adviceLoading"));
     try {
-      const res = await api("/advice", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ label: last.prediction.label, lang, confidence: last.prediction.confidence }),
-      });
-      const data = await res.json();
+      const data = BROWSER_MODE
+        ? await window.KrishiLocal.advice(last.prediction.label, lang)
+        : await (await api("/advice", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ label: last.prediction.label, lang, confidence: last.prediction.confidence }),
+        })).json();
       adviceText = data.text;
       $("adviceText").textContent = data.text;
       show($("listenBtn"));
@@ -247,6 +255,10 @@
     if (!adviceText) return;
     $("listenBtn").disabled = true;
     try {
+      if (BROWSER_MODE) {
+        await window.KrishiLocal.speak(adviceText, lang); // phone's built-in voice
+        return;
+      }
       const res = await api("/tts", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: adviceText, lang }),
@@ -326,4 +338,5 @@
 
   applyLanguage();
   updateOnline();
+  if (BROWSER_MODE) window.KrishiLocal.init().catch(() => { /* retried when the user checks a leaf */ }); // preload the model
 })();

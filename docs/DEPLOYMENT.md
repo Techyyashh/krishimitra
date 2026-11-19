@@ -1,7 +1,29 @@
 # 🚀 Deployment guide
 
-Goal: a public HTTPS URL that serves the web app **and** the API, with the model on the Hugging Face Hub,
-and automatic redeploys whenever you push to `main`. Everything here is free.
+There are two versions of the live app:
+
+| | **Static (free) – current live demo** | **Full server (Docker)** |
+|---|---|---|
+| Where the AI runs | In the visitor's browser (onnxruntime-web) | On the server (FastAPI) |
+| Features | Leaf check, diagnosis, info card, built-in advice, voice, offline | + AI chat, Claude-written advice, feedback & stats |
+| Hosting | Hugging Face **Static** Space – free | Render free tier, or Hugging Face with **PRO** ($9/month; Docker Spaces are no longer free) |
+| URL | https://techyyashh-krishimitra.static.hf.space | your Render / HF URL |
+
+## A. Static live demo (free)
+```powershell
+huggingface-cli login                                   # once, with a Write token
+python scripts/upload_model.py --repo Techyyashh/krishimitra-model
+python scripts/build_static.py --deploy --space Techyyashh/krishimitra
+```
+Test locally first: `python scripts/build_static.py` then `python -m http.server 8090 -d dist/static`.
+
+**Auto-deploy from GitHub:** repo → Settings → Secrets and variables → Actions → add secret `HF_TOKEN`
+and variables `HF_SPACE_ID=Techyyashh/krishimitra`, `HF_MODEL_REPO=Techyyashh/krishimitra-model`.
+After that, every push to `main` that passes CI redeploys the static site (`.github/workflows/deploy.yml`).
+
+## B. Full server version (Docker)
+
+Goal: a public HTTPS URL that serves the web app **and** the API, with the model on the Hugging Face Hub.
 
 ```
 GitHub (code) ──CI passes──► GitHub Actions ──upload──► Hugging Face Space (Docker)
@@ -25,12 +47,11 @@ Hugging Face Hub (model: krishimitra.onnx) ◄───────────�
    ```
 4. Check `https://huggingface.co/Techyyashh/krishimitra-model`.
 
-## 2. Create the Space (hosting)
-First deploy from your laptop:
+## 2. Create the Space (hosting – needs Hugging Face PRO for Docker; or use Render, step 4)
+Use a different Space name than the static demo, e.g. `krishimitra-server`:
 ```powershell
-$env:HF_TOKEN="hf_xxx"; $env:HF_SPACE_ID="Techyyashh/krishimitra"
 python scripts/deploy_hf_space.py --dry-run   # see what will be uploaded
-python scripts/deploy_hf_space.py
+python scripts/deploy_hf_space.py --space Techyyashh/krishimitra-server --model-repo Techyyashh/krishimitra-model
 ```
 Then on the Space page → **Settings**:
 | Type | Name | Value |
