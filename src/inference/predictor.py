@@ -38,6 +38,9 @@ class Predictor:
         meta = json.loads(Path(classes_path).read_text(encoding="utf-8"))
         self.classes: list[str] = meta["classes"]
         self.size: int = int(meta.get("image_size", 224))
+        # Optional: resize the shortest edge first, then centre-crop to `size`
+        # (used by models trained with that preprocessing, e.g. Hugging Face MobileNetV2).
+        self.resize_shortest: int | None = meta.get("resize_shortest_edge")
         self.mean = np.array(meta.get("mean", [0.485, 0.456, 0.406]), dtype=np.float32)
         self.std = np.array(meta.get("std", [0.229, 0.224, 0.225]), dtype=np.float32)
         self.top_k = min(top_k, len(self.classes))
@@ -50,7 +53,16 @@ class Predictor:
         log.info("Loaded model %s (%d classes, %dpx)", Path(onnx_path).name, len(self.classes), self.size)
 
     def preprocess(self, image: Image.Image) -> np.ndarray:
-        rgb = image.convert("RGB").resize((self.size, self.size), Image.BILINEAR)
+        rgb = image.convert("RGB")
+        if self.resize_shortest:
+            w, h = rgb.size
+            scale = self.resize_shortest / min(w, h)
+            rgb = rgb.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.BILINEAR)
+            w, h = rgb.size
+            left, top = (w - self.size) // 2, (h - self.size) // 2
+            rgb = rgb.crop((left, top, left + self.size, top + self.size))
+        else:
+            rgb = rgb.resize((self.size, self.size), Image.BILINEAR)
         x = np.asarray(rgb, dtype=np.float32) / 255.0
         x = (x - self.mean) / self.std
         return np.transpose(x, (2, 0, 1))[np.newaxis].astype(np.float32)  # HWC → 1×C×H×W

@@ -83,6 +83,15 @@ copy .env.example .env      # then add ANTHROPIC_API_KEY
 pytest
 ```
 
+### No model yet? Use the starter model (2 minutes)
+```powershell
+pip install transformers==4.46.3
+python scripts/import_pretrained.py
+```
+This converts the open, Apache-2.0 [neghani/plantvillage-mobilenetv2](https://huggingface.co/neghani/plantvillage-mobilenetv2)
+(same 38 classes) into `models/krishimitra.onnx`, so the app works immediately. Its model card reports 99.2% on the
+PlantVillage test split but only ~16% on a small real-field set, so replace it with your own trained model.
+
 ### Train the model (Google Colab, free GPU)
 Open `notebooks/train_on_colab.ipynb` in Colab (File → Upload notebook), set the runtime to **T4 GPU** and run all cells.
 Then download `krishimitra.onnx` and `classes.json` from `MyDrive/krishimitra/artifacts` into `models/`.
