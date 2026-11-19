@@ -1,13 +1,22 @@
-/* Service worker: makes the app installable and loads instantly on slow networks.
-   App shell = cache-first. API calls = always network (results must be fresh). */
-const CACHE = "krishimitra-v2";
+/* Service worker: makes the app installable, fast on slow networks, and usable offline.
+   - Page navigations: network first, cached index.html when offline.
+   - Static files (and the AI engine from the CDN): stale-while-revalidate.
+   - API calls: never cached (results must be fresh).
+   Important: never store or serve a *redirected* response for a page – Chrome rejects it with
+   ERR_FAILED (static hosts often redirect "/" → "/index.html"). */
+const CACHE = "krishimitra-v3";
 const SHELL = [
-  "./", "index.html", "styles.css", "app.js", "config.js", "manifest.webmanifest", "privacy.html",
+  "index.html", "styles.css", "app.js", "local.js", "config.js", "manifest.webmanifest", "privacy.html",
   "icons/icon-192.png", "icons/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(CACHE)
+      // Add files one by one so a single missing file does not break installation.
+      .then((cache) => Promise.all(SHELL.map((path) => cache.add(path).catch(() => {}))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (event) => {
@@ -18,25 +27,39 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+/** Copy a redirected response into a plain one so it can be used for any request. */
+async function unredirect(response) {
+  if (!response || !response.redirected) return response;
+  const body = await response.blob();
+  return new Response(body, { status: response.status, statusText: response.statusText, headers: response.headers });
+}
+
+function store(request, response) {
+  if (response && response.ok && !response.redirected && response.type !== "opaqueredirect") {
+    const copy = response.clone();
+    caches.open(CACHE).then((cache) => cache.put(request, copy));
+  }
+  return response;
+}
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  // Also cache the AI engine from the CDN, so browser mode works offline after the first visit.
   const cacheable = url.origin === self.location.origin || url.hostname === "cdn.jsdelivr.net";
   if (request.method !== "GET" || url.pathname.startsWith("/api/") || !cacheable) return;
 
+  if (request.mode === "navigate") {
+    // Let the browser handle redirects itself; fall back to the cached app shell when offline.
+    event.respondWith(
+      fetch(request).catch(async () => unredirect(await caches.match("index.html")) || Response.error())
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(request).then((cached) => {
-      const network = fetch(request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, copy));
-          }
-          return response;
-        })
-        .catch(() => (request.mode === "navigate" ? caches.match("index.html") : undefined));
-      return cached || network; // stale-while-revalidate
+    caches.match(request).then(async (cached) => {
+      const network = fetch(request).then((response) => store(request, response)).catch(() => undefined);
+      return (await unredirect(cached)) || (await network) || Response.error();
     })
   );
 });
